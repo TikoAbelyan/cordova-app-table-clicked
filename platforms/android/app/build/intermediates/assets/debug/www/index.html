@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+      
+        
+       
+        <script  type="text/javascript" src="js/jquery.js"></script>
+        <!-- <script type="text/javascript" src="js/index.js"></script> -->
+        <script>
+        
+        "use strict";
+
+var array = ["lime", "magenta", "purple", "aqua", "yellowgreen", "blue", "grey", "pink", "red", "green", "maroon", "lightblue", "SpringGreen", "OrangeRed", "LawnGreen", "Gold", "DeepPink"];
+document.write("<table>");
+for (var x = 0; x < 8; x++) {
+	document.write("<tr style='width:40px;height:40px'>");
+	for (var y = 0; y < 8; y++) {
+		var z2 = Math.floor(Math.random() * 90 + 10);
+		var z3 = Math.floor(Math.random() * 16);
+		document.write("<td class='col" + y + "' id=row" + x + " style='border-radius:10px;width:40px;height:40px;cursor:pointer;background:" + array[z3] + "'>" + z2 + "</td>");
+		//console.log("c1("+x+")")
+	}
+	document.write("</tr>");
+}
+document.write("</table>");
+$("tr").click(function (event) {
+	var childs = $(this).children();
+	var color = event.target.style.backgroundColor;
+	// console.log(color);
+	var id = event.target.id;
+	var cl = event.target.className;
+	//console.log(childs);
+	var td = $("." + cl);
+	for (var i = 0; i < childs.length; ++i) {
+		td[i].style.backgroundColor = color;
+		//if(childs[i].id === id){
+		childs[i].style.backgroundColor = color;
+		//}
+	}
+});
+        
+        </script>
+         <script type="text/javascript" src="cordova.js"></script>
+    </body>
+
+</html>
